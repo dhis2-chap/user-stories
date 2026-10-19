@@ -1,0 +1,23 @@
+# User stories for climate data: open-climate-service, climate-tools and the
+# Climate app. Format: see README.md.
+
+- id: ocs-scheduled-import
+  reader: OCS installer
+  goal: install OCS and get data into DHIS2 on a schedule
+  starts_at:
+    - repo: dhis2/open-climate-service
+      path: docs/setup_guide.md
+
+- id: climate-tools-aggregate
+  reader: climate data scientist
+  goal: fetch and aggregate climate data for DHIS2 org units
+  starts_at:
+    - repo: dhis2/climate-tools
+      path: docs/getting-started/intro.md
+
+- id: climate-app-import
+  reader: DHIS2 user
+  goal: import weather and climate data with the Climate app
+  starts_at:
+    - repo: dhis2/climate-app
+      path: README.md

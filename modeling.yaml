@@ -1,0 +1,45 @@
+# User stories for the modeling platform: chap-core, chapkit, the SDKs, the model
+# examples and the Modeling App. Format: see README.md.
+
+- id: newcomer-first-eval
+  reader: newcomer model developer
+  goal: get a first model running and evaluated with `chap eval`
+  starts_at:
+    - repo: dhis2-chap/chap-core
+      path: docs/external_models/newcomer.md
+    - repo: dhis2-chap/minimalist_example
+      path: README.md
+  jira: [CLIM-374]
+
+- id: wrap-existing-model
+  reader: experienced modeller
+  goal: wrap an existing model and evaluate it
+  starts_at:
+    - repo: dhis2-chap/chap-core
+      path: docs/external_models/experienced_modeller.md
+    - repo: dhis2-chap/chapkit
+      path: docs/index.md
+  jira: [CLIM-373]
+
+- id: install-chap-with-dhis2
+  reader: DHIS2 implementer
+  goal: install Chap next to DHIS2, keep it updated and add models
+  starts_at:
+    - repo: dhis2-chap/chap-core
+      path: docs/modeling-app/index.md
+
+- id: modeling-app-first-prediction
+  reader: Modeling App user
+  goal: create a dataset, an evaluation and a prediction
+  starts_at:
+    - repo: dhis2-chap/chap-frontend
+      path: apps/modeling-app/docs/user-guides/getting-started
+  jira: [CLIM-430]
+
+- id: chap-core-first-pr
+  reader: chap-core contributor
+  goal: set up a dev environment and open a first PR
+  starts_at:
+    - repo: dhis2-chap/chap-core
+      path: docs/contributor/index.md
+  jira: [CLIM-374]
