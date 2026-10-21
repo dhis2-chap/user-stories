@@ -48,7 +48,9 @@ Each file is a list of stories:
 
 ## Status
 
-The first stories were drafted from the structure of the docs, not agreed by
-the team, and none has `done_when` yet. Review them, and add readers that are
+The climate stories are copied from the user stories in open-climate-service
+`docs/project_description.md`. The modeling stories were drafted from the
+structure of the docs and have not been agreed by the team. None has
+`done_when` yet. Review them, and add readers that are
 missing, for example R model developers, model developers publishing to the
 marketplace, and people running the servers.
