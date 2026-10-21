@@ -42,6 +42,12 @@ Each file is a list of stories:
 - `id` is how tools and tests refer to a story. Do not rename one; add a new
   story and delete the old one instead.
 - `goal` is one sentence. If a story needs more than one goal, split it.
+- `done_when` lists what must be true when the reader has reached the goal,
+  as outcomes someone can check, not steps. For example, for a scheduled
+  import: "values for yesterday are in DHIS2 for every org unit" and "the
+  import runs again the next night without manual steps". Without it, the
+  goal sentence is the only test. docs-review counts a story as reached only
+  when every item holds.
 - `starts_at` paths are on the default branch. Directories are allowed.
 - `jira` links to the persona or user story in Jira, where the background and
   discussion live. This file holds what can be checked; Jira holds the why.
