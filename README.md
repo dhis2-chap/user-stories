@@ -18,7 +18,7 @@ One file per domain. Each team owns its file.
 | File | Domain |
 |------|--------|
 | `modeling.yaml` | modeling platform: chap-core, chapkit, SDKs, model examples, Modeling App |
-| `climate-data.yaml` | climate data: open-climate-service, climate-tools, Climate app |
+| `climate-data.yaml` | climate data: open-climate-service, climate-tools, Climate app (only open-climate-service so far) |
 | `cross-domain.yaml` | stories that span domains, for example setting up open-climate-service and chap-core together; owned by both teams |
 
 Add a file when a new domain does not fit any of these.
