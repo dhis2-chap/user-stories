@@ -4,6 +4,7 @@
 - id: newcomer-first-eval
   reader: newcomer model developer
   goal: get a first model running and evaluated with `chap eval`
+  status: current
   starts_at:
     - repo: dhis2-chap/chap-core
       path: docs/external_models/newcomer.md
@@ -14,6 +15,7 @@
 - id: wrap-existing-model
   reader: experienced modeller
   goal: wrap an existing model and evaluate it
+  status: current
   starts_at:
     - repo: dhis2-chap/chap-core
       path: docs/external_models/experienced_modeller.md
@@ -24,6 +26,7 @@
 - id: install-chap-with-dhis2
   reader: DHIS2 implementer
   goal: install Chap next to DHIS2, keep it updated and add models
+  status: current
   starts_at:
     - repo: dhis2-chap/chap-core
       path: docs/modeling-app/index.md
@@ -31,6 +34,7 @@
 - id: modeling-app-first-prediction
   reader: Modeling App user
   goal: create a dataset, an evaluation and a prediction
+  status: current
   starts_at:
     - repo: dhis2-chap/chap-frontend
       path: apps/modeling-app/docs/user-guides/getting-started
@@ -39,6 +43,7 @@
 - id: chap-core-first-pr
   reader: chap-core contributor
   goal: set up a dev environment and open a first PR
+  status: current
   starts_at:
     - repo: dhis2-chap/chap-core
       path: docs/contributor/index.md

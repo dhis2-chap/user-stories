@@ -8,6 +8,7 @@
 - id: ocs-scheduled-climate-import  # US-A
   reader: data manager
   goal: import daily temperature and precipitation data into DHIS2 at a user-defined scheduled interval (e.g. nightly), automatically aggregated to org units
+  status: current
   starts_at:
     - repo: dhis2/open-climate-service
       path: docs/importing_to_dhis2.md
@@ -17,6 +18,7 @@
 - id: ocs-population-import  # US-B
   reader: data manager
   goal: import population data for the current year, automatically aggregated to org units
+  status: current
   starts_at:
     - repo: dhis2/open-climate-service
       path: docs/built_in_datasets.md
@@ -26,6 +28,7 @@
 - id: ocs-population-on-maps  # US-C
   reader: analyst
   goal: visualise high-resolution population data on DHIS2 Maps with styles adapted to the population density of the country
+  status: planned
   starts_at:
     - repo: dhis2/open-climate-service
       path: docs/index.md
@@ -33,6 +36,7 @@
 - id: ocs-preview-before-import  # US-D
   reader: analyst
   goal: preview climate data for an org unit of interest before importing it to DHIS2
+  status: current
   starts_at:
     - repo: dhis2/open-climate-service
       path: docs/web_interface.md
@@ -40,6 +44,7 @@
 - id: ocs-custom-processing-step  # US-E
   reader: data manager
   goal: add a custom pre- or post-processing step (e.g. calculate consecutive rainy days) before importing the result to DHIS2
+  status: current
   starts_at:
     - repo: dhis2/open-climate-service
       path: docs/workflows.md

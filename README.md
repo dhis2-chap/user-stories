@@ -31,6 +31,7 @@ Each file is a list of stories:
 - id: newcomer-first-eval            # unique across all files, kebab-case, never reused
   reader: newcomer model developer   # who, in a few words
   goal: get a first model running and evaluated with `chap eval`
+  status: current                    # current or planned
   starts_at:                         # where the reader starts, in order
     - repo: dhis2-chap/chap-core     # org/name on GitHub
       path: docs/external_models/newcomer.md
@@ -48,6 +49,11 @@ Each file is a list of stories:
   import runs again the next night without manual steps". Without it, the
   goal sentence is the only test. docs-review counts a story as reached only
   when every item holds.
+- `status` is `current` when the story should work today, and `planned`
+  when it is where we want to get to. Stories are permanent: a story is not
+  closed when it works, it stays and should keep working. Tools that check
+  stories, such as docs-review and tests, skip `planned` ones. Change a story to `current` when the
+  work that makes it true is done.
 - `starts_at` paths are on the default branch. Directories are allowed.
 - `jira` links to the persona or user story in Jira, where the background and
   discussion live. This file holds what can be checked; Jira holds the why.
@@ -57,6 +63,6 @@ Each file is a list of stories:
 The climate stories are copied from the user stories in open-climate-service
 `docs/project_description.md`. The modeling stories were drafted from the
 structure of the docs and have not been agreed by the team. None has
-`done_when` yet. Review them, and add readers that are
-missing, for example R model developers, model developers publishing to the
+`done_when` yet, and each `status` is a first guess. Review them, and add
+readers that are missing, for example R model developers, model developers publishing to the
 marketplace, and people running the servers.
