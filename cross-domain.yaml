@@ -1,8 +1,5 @@
 # User stories that span several domains, for example someone setting up
 # open-climate-service and chap-core together. Format: see README.md.
-#
-# Two stories are planned and have no starting page yet (starts_at: []). Where
-# the decision maker works is open, and the CAPS link is not ready.
 
 - id: install-full-stack
   reader: implementer
@@ -19,6 +16,11 @@
     - climate data from OCS is in DHIS2 as data elements
     - the docs say which versions of DHIS2, chap-core and OCS work together
   jira: [CLIM-924, CLIM-807]
+  notes: >-
+    The reader may not have DHIS2 yet. We still want the entry point in our
+    docs, and send them on to the DHIS2 install guide from there. The chap-site
+    front page is a guess for that entry point. CAPS is left out on purpose:
+    see caps-pipeline.
 
 - id: caps-pipeline
   reader: implementer
@@ -26,6 +28,10 @@
   status: planned
   starts_at: []
   jira: [CLIM-1134]
+  notes: >-
+    Split out of install-full-stack because the CAPS link is not ready yet.
+    CAPS is built by HISP Tanzania, so part of this path runs through docs we
+    do not own; our side has to point into them correctly.
 
 - id: covariate-from-ocs-to-modeling-app
   reader: analyst at the MOH
@@ -37,6 +43,10 @@
   done_when:
     - the variable is a data element in DHIS2 with values for my org units
     - the Modeling App lets me pick it as a covariate
+  notes: >-
+    The dependency Knut's notes point at: a covariate has to exist as a DHIS2
+    data element, set up through OCS or CAPS, before the Modeling App can use
+    it. Probably the path most countries stumble on.
 
 - id: operator-upgrade-stack
   reader: operator
@@ -47,10 +57,18 @@
       path: docs/modeling-app/index.md
   done_when:
     - after the upgrade, existing evaluations, prediction setups and installed models are still there
+  notes: >-
+    "Keep it updated" used to be part of install-chap-with-dhis2 in
+    modeling.yaml. Set to current on the assumption that upgrading is
+    documented; check.
 
 - id: decision-maker-act-on-prediction
   reader: decision maker
   goal: see this period's prediction for my area and decide whether to act on it
   status: planned
   starts_at: []
-  # Where this person works (Modeling App, dashboard, bulletin, Early Warning app) is open; see CLIM-1619.
+  notes: >-
+    Where this person works is open: the Modeling App, a dashboard, a bulletin
+    or the Early Warning app (CLIM-1619, and the "Reaching decision makers"
+    initiative on the roadmap). National or district level is also open. Not
+    the same as judging a model: this is one period's forecast.

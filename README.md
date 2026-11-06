@@ -39,6 +39,8 @@ Each file is a list of stories:
   done_when:                         # optional: checkable outcomes
     - ...
   jira: [CLIM-374]                   # optional: the Jira issue describing this reader
+  notes: >-                          # optional: context for the team, free text
+    why this story is here, what is still open, how to read it
 ```
 
 - `id` is how tools and tests refer to a story. Do not rename one; add a new
@@ -58,6 +60,9 @@ Each file is a list of stories:
 - `starts_at` paths are on the default branch. Directories are allowed.
 - `jira` links to the persona or user story in Jira, where the background and
   discussion live. This file holds what can be checked; Jira holds the why.
+- `notes` is free text for the team: where the story came from, what is
+  still undecided, and anything a reader of the YAML should know. Tools ignore
+  it. Keep it to a few sentences; longer discussion goes in Jira.
 
 ## Status
 

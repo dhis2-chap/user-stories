@@ -1,11 +1,6 @@
 # User stories for people using the Modeling App in a country. The readers here
 # work in the app for the country's sake; the people building or installing the
 # platform are in modeling.yaml. Format: see README.md.
-#
-# These stories are written as outcomes, not as today's screens, so they stay
-# true if the flow is simplified (CLIM-1752). In particular, how models get
-# configured (by hand, defaults or HPO) is open, and the stories do not assume
-# either. The roles may be one person or several.
 
 - id: analyst-start-evaluation
   reader: analyst at the MOH
@@ -18,6 +13,12 @@
     - an evaluation is running for every candidate model on my data
     - I am told when it is done, without watching the app
   jira: [CLIM-430]
+  notes: >-
+    From the capacity-building meeting on 2026-11-04 (Knut's notes): the first
+    thing this person does is pick what to predict, which covariates and which
+    models. Written as an outcome, not as today's screens, so it stays true if
+    the flow is simplified (CLIM-1752). How models get configured, by hand,
+    defaults or HPO, is open; the story must not assume either.
 
 - id: analyst-judge-evaluations
   reader: analyst at the MOH
@@ -30,3 +31,9 @@
     - every model is shown against the baselines, and the docs say what the comparison means
     - I can tell which model, if any, to promote, and have done so
   jira: [CLIM-430]
+  notes: >-
+    May be a different person from the one who started the evaluation. Judging
+    a model means comparing it with the baselines, and "good enough" depends on
+    the decision (team principles 6 to 8). This is about the model, from a
+    backtest; judging one period's forecast is the decision maker's story in
+    cross-domain.yaml.
