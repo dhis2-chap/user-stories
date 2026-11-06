@@ -17,7 +17,8 @@ One file per domain. Each team owns its file.
 
 | File | Domain |
 |------|--------|
-| `modeling.yaml` | modeling platform: chap-core, chapkit, SDKs, model examples, Modeling App |
+| `modeling.yaml` | modeling platform: chap-core, chapkit, SDKs, model examples |
+| `modeling-app.yaml` | people using the Modeling App in a country: setting up evaluations, judging them |
 | `climate-data.yaml` | climate data: open-climate-service, climate-tools, Climate app (only open-climate-service so far) |
 | `cross-domain.yaml` | stories that span domains, for example setting up open-climate-service and chap-core together; owned by both teams |
 
@@ -62,7 +63,24 @@ Each file is a list of stories:
 
 The climate stories are copied from the user stories in open-climate-service
 `docs/project_description.md`. The modeling stories were drafted from the
-structure of the docs and have not been agreed by the team. None has
-`done_when` yet, and each `status` is a first guess. Review them, and add
-readers that are missing, for example R model developers, model developers publishing to the
-marketplace, and people running the servers.
+structure of the docs and have not been agreed by the team. The Modeling App
+and cross-domain stories were added on 2026-11-06 from the capacity-building
+meeting notes (user roles in the Modeling App) and from the installation
+needs, for discussion at the team meeting the week after. Review is tracked in
+CLIM-1491, under CLIM-1780.
+
+Open for that discussion:
+
+- Two `planned` stories have `starts_at: []` because nobody knows yet where the
+  reader starts. Decide whether an empty `starts_at` is allowed, or the field
+  is left out for planned stories.
+- Reader names: the files use `analyst`, `data manager`, `implementer`,
+  `operator` and `decision maker`. Agree on one set and use it everywhere.
+- The install story starts on chap.dhis2.org and sends the reader on to the
+  DHIS2 install docs. The entry page is a guess.
+- `operator-upgrade-stack` is `current` on the assumption that upgrading is
+  documented; check.
+- The Google Doc linked from CLIM-430 has more Modeling App stories that have
+  not been read yet.
+- Still missing: R model developers, model developers publishing to the
+  marketplace.

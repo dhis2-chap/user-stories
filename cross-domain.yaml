@@ -1,4 +1,56 @@
 # User stories that span several domains, for example someone setting up
 # open-climate-service and chap-core together. Format: see README.md.
+#
+# Two stories are planned and have no starting page yet (starts_at: []). Where
+# the decision maker works is open, and the CAPS link is not ready.
 
-[]
+- id: install-full-stack
+  reader: implementer
+  goal: set up DHIS2, chap-core, the Modeling App and OCS, install a model, and have the Modeling App ready for an analyst
+  status: current
+  starts_at:
+    - repo: dhis2-chap/chap-site
+      path: docs/index.md
+    - repo: dhis2-chap/chap-core
+      path: docs/modeling-app/index.md
+  done_when:
+    - one page in our docs is the entry point, and it sends the reader to the DHIS2 installation guide and back
+    - the Modeling App opens in DHIS2 and lists at least one model installed from the Model Marketplace
+    - climate data from OCS is in DHIS2 as data elements
+    - the docs say which versions of DHIS2, chap-core and OCS work together
+  jira: [CLIM-924, CLIM-807]
+
+- id: caps-pipeline
+  reader: implementer
+  goal: have CAPS fetch data through OCS, trigger predictions in Chap and write results back to DHIS2 on a schedule
+  status: planned
+  starts_at: []
+  jira: [CLIM-1134]
+
+- id: covariate-from-ocs-to-modeling-app
+  reader: analyst at the MOH
+  goal: get a climate variable, for example rainfall, into DHIS2 so I can use it as a covariate in the Modeling App
+  status: current
+  starts_at:
+    - repo: dhis2/open-climate-service
+      path: docs/importing_to_dhis2.md
+  done_when:
+    - the variable is a data element in DHIS2 with values for my org units
+    - the Modeling App lets me pick it as a covariate
+
+- id: operator-upgrade-stack
+  reader: operator
+  goal: upgrade chap-core, the Modeling App and OCS without losing data or models
+  status: current
+  starts_at:
+    - repo: dhis2-chap/chap-core
+      path: docs/modeling-app/index.md
+  done_when:
+    - after the upgrade, existing evaluations, prediction setups and installed models are still there
+
+- id: decision-maker-act-on-prediction
+  reader: decision maker
+  goal: see this period's prediction for my area and decide whether to act on it
+  status: planned
+  starts_at: []
+  # Where this person works (Modeling App, dashboard, bulletin, Early Warning app) is open; see CLIM-1619.

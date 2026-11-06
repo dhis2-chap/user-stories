@@ -1,0 +1,32 @@
+# User stories for people using the Modeling App in a country. The readers here
+# work in the app for the country's sake; the people building or installing the
+# platform are in modeling.yaml. Format: see README.md.
+#
+# These stories are written as outcomes, not as today's screens, so they stay
+# true if the flow is simplified (CLIM-1752). In particular, how models get
+# configured (by hand, defaults or HPO) is open, and the stories do not assume
+# either. The roles may be one person or several.
+
+- id: analyst-start-evaluation
+  reader: analyst at the MOH
+  goal: choose the disease to predict, the covariates available in my instance and the candidate models, and start an evaluation of them
+  status: current
+  starts_at:
+    - repo: dhis2-chap/chap-frontend
+      path: apps/modeling-app/docs/user-guides/getting-started
+  done_when:
+    - an evaluation is running for every candidate model on my data
+    - I am told when it is done, without watching the app
+  jira: [CLIM-430]
+
+- id: analyst-judge-evaluations
+  reader: analyst at the MOH
+  goal: see whether any evaluated model is good enough for my decision, and promote it to a prediction setup
+  status: current
+  starts_at:
+    - repo: dhis2-chap/chap-frontend
+      path: apps/modeling-app/docs/user-guides/getting-started
+  done_when:
+    - every model is shown against the baselines, and the docs say what the comparison means
+    - I can tell which model, if any, to promote, and have done so
+  jira: [CLIM-430]
