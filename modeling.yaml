@@ -5,6 +5,7 @@
 - id: newcomer-first-eval
   reader: newcomer model developer
   goal: get a first model running and evaluated with `chap eval`
+  notes: This is typically someone wanting to contribute models. Could be a master student, someone at a workshop, or someone completely independent. We should assume litle prior knowledge and not high tech compteance here.
   status: current
   starts_at:
     - repo: dhis2-chap/chap-core
@@ -15,6 +16,7 @@
 
 - id: wrap-existing-model
   reader: experienced modeller
+  notes: This could be anyone that has developed their own model that is currently not compatible with Chap. This person might not have high tech competance. Could be using AI agent, but should also be possible to do this without.
   goal: wrap an existing model and evaluate it
   status: current
   starts_at:
@@ -27,6 +29,7 @@
 - id: install-chap-with-dhis2
   reader: DHIS2 implementer
   goal: install Chap next to DHIS2 and add models
+  notes: Typically someone wanting to setup Chap themselves for playing around with it or demoing it, but could also be someone wanting this for more production-ready setup.
   status: current
   starts_at:
     - repo: dhis2-chap/chap-core
