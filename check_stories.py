@@ -111,6 +111,7 @@ def main() -> int:
     errors: list = []
     ids: dict = {}
     readers_used: dict = {}
+    current_without_done_when: list = []
     for name in STORY_FILES:
         path = ROOT / name
         if not path.exists():
@@ -130,6 +131,8 @@ def main() -> int:
                 ids[story_id] = name
                 if is_text(story.get("reader")):
                     readers_used.setdefault(story["reader"], []).append(story_id)
+                if story.get("status") == "current" and "done_when" not in story:
+                    current_without_done_when.append(story_id)
 
     reader_keys = check_readers(errors)
 
@@ -140,6 +143,10 @@ def main() -> int:
         print("note: reader names not in readers.yaml (not an error until the team agrees the list):")
         for reader in unknown:
             print(f"  - {reader!r}: {', '.join(readers_used[reader])}")
+    if current_without_done_when:
+        print("note: `current` stories without `done_when` (not an error yet; the goal is the only test):")
+        for story_id in current_without_done_when:
+            print(f"  - {story_id}")
     print(f"{len(ids)} stories checked, {len(errors)} error(s)")
     return 1 if errors else 0
 

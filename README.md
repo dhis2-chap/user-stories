@@ -96,7 +96,8 @@ one of the keys and the check below will require it.
 `check_stories.py` checks the story files against the rules above: required
 fields, kebab-case unique ids, one-sentence goals, valid statuses, `starts_at`
 on every `current` story, `notes` on every `proposed` story, and the shapes of
-`starts_at`, `done_when` and `jira`. It runs in CI on every push and pull
+`starts_at`, `done_when` and `jira`. It also lists, as a note, the `current`
+stories that have no `done_when` yet. It runs in CI on every push and pull
 request (`.github/workflows/check.yml`). To run it locally:
 
 ```sh
