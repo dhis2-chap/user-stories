@@ -32,7 +32,7 @@ Each file is a list of stories:
 - id: newcomer-first-eval            # unique across all files, kebab-case, never reused
   reader: newcomer model developer   # who, in a few words
   goal: get a first model running and evaluated with `chap eval`
-  status: current                    # current or planned
+  status: current                    # current, planned or proposed
   starts_at:                         # where the reader starts, in order
     - repo: dhis2-chap/chap-core     # org/name on GitHub
       path: docs/external_models/newcomer.md
@@ -52,17 +52,44 @@ Each file is a list of stories:
   import runs again the next night without manual steps". Without it, the
   goal sentence is the only test. docs-review counts a story as reached only
   when every item holds.
-- `status` is `current` when the story should work today, and `planned`
-  when it is where we want to get to. Stories are permanent: a story is not
-  closed when it works, it stays and should keep working. Tools that check
-  stories, such as docs-review and tests, skip `planned` ones. Change a story to `current` when the
-  work that makes it true is done.
-- `starts_at` paths are on the default branch. Directories are allowed.
+- `status` is `current` when the story should work today, `planned` when it
+  is where we want to get to, and `proposed` when someone has suggested the
+  story and the team has not decided yet (see "Proposing a change"). Stories
+  are permanent: a story is not closed when it works, it stays and should keep
+  working. Tools that check stories, such as docs-review and tests, only use
+  `current` stories and skip `planned` and `proposed` ones. Change a story to
+  `current` when the work that makes it true is done. A `proposed` story
+  becomes `current` or `planned` when the team accepts it, and is deleted if
+  the team drops it; it is not kept with a rejected status.
+- `starts_at` paths are on the default branch. Directories are allowed. It is
+  required for `current` stories. For `planned` and `proposed` stories it may
+  be empty or left out when nobody knows yet where the reader starts.
 - `jira` links to the persona or user story in Jira, where the background and
   discussion live. This file holds what can be checked; Jira holds the why.
 - `notes` is free text for the team: where the story came from, what is
   still undecided, and anything a reader of the YAML should know. Tools ignore
-  it. Keep it to a few sentences; longer discussion goes in Jira.
+  it. Keep it to a few sentences; longer discussion goes in Jira. For
+  `proposed` stories it is required: say who asked for the story and why.
+
+## Proposing a change
+
+Anyone can propose a new story or a change to an existing one. Two ways:
+
+- **Pull request**, for a concrete proposal. Add the story to the file for its
+  domain with `status: proposed`, a new `id`, a `reader`, a one-sentence `goal`
+  and `notes` saying who asked for it and why. `starts_at`, `done_when` and
+  `jira` are welcome but not required. To change an existing story, edit it and
+  explain the change in the pull request. Keep one proposal per pull request so
+  each can be discussed on its own.
+- **Issue**, for an idea that is not ready to be a story yet, or a question
+  about an existing story. No YAML needed: describe the reader and what they
+  need to do.
+
+The team goes through proposals at its team meeting. An accepted proposal is
+merged (or, if it was an issue, written up as a story) and gets `status:
+current` or `planned`. A proposal the team drops is closed with a reason, and
+a `proposed` story already in the files is deleted. Proposals may sit in the
+files as `proposed` until they are discussed.
 
 ## Status
 
@@ -76,9 +103,6 @@ CLIM-1491, under CLIM-1780.
 
 Open for that discussion:
 
-- Two `planned` stories have `starts_at: []` because nobody knows yet where the
-  reader starts. Decide whether an empty `starts_at` is allowed, or the field
-  is left out for planned stories.
 - Reader names: the files use `analyst`, `data manager`, `implementer`,
   `operator` and `decision maker`. Agree on one set and use it everywhere.
 - The install story starts on chap.dhis2.org and sends the reader on to the
