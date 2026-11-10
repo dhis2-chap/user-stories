@@ -3,7 +3,7 @@
 
 - id: install-full-stack
   reader: implementer
-  goal: set up DHIS2, chap-core, the Modeling App and OCS, install a model, and have the Modeling App ready for an analyst
+  goal: set up DHIS2, chap-core, the Modeling App and OCS, install a model, and have the Modeling App ready for an analyst. Should be possible on a real server, not only locally.
   status: current
   starts_at:
     - repo: dhis2-chap/chap-site
@@ -25,7 +25,7 @@
 - id: caps-pipeline
   reader: implementer
   goal: have CAPS fetch data through OCS, trigger predictions in Chap and write results back to DHIS2 on a schedule
-  status: planned
+  status: current
   starts_at: []
   jira: [CLIM-1134]
   notes: >-
