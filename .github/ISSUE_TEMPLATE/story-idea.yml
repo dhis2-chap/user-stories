@@ -1,0 +1,45 @@
+name: Story idea
+description: An idea for a user story that is not ready to be a story yet, or a question about an existing one. No YAML needed.
+title: "Idea: <reader> needs to <goal>"
+labels: [story-idea]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the reader and what they need to do. The team goes through ideas at its
+        team meeting and writes the story if it accepts the idea. For a concrete proposal
+        with YAML, open a pull request instead (see "Proposing a change" in the README).
+  - type: input
+    id: reader
+    attributes:
+      label: Reader
+      description: Who needs this, in a few words. Use a reader name already in the YAML files if one fits.
+      placeholder: e.g. analyst at the MOH
+    validations:
+      required: true
+  - type: textarea
+    id: need
+    attributes:
+      label: What they need to do
+      description: One or two sentences, as an outcome rather than as screens or steps.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: What the reader gets from reaching the goal, and what goes wrong today without it.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Where the idea came from
+      description: Who asked for it, or the meeting note, Jira issue or conversation it comes from.
+    validations:
+      required: true
+  - type: input
+    id: related
+    attributes:
+      label: Related story or issue
+      description: The id of an existing story this touches (for example `newcomer-first-eval`), or an issue number, if any.

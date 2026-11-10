@@ -82,8 +82,8 @@ Anyone can propose a new story or a change to an existing one. Two ways:
   explain the change in the pull request. Keep one proposal per pull request so
   each can be discussed on its own.
 - **Issue**, for an idea that is not ready to be a story yet, or a question
-  about an existing story. No YAML needed: describe the reader and what they
-  need to do.
+  about an existing story. No YAML needed: the "Story idea" issue form asks for
+  the reader, what they need to do, why, and where the idea came from.
 
 The team goes through proposals at its team meeting. An accepted proposal is
 merged (or, if it was an issue, written up as a story) and gets `status:
