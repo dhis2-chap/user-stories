@@ -1,0 +1,89 @@
+# The readers the stories are written for. DRAFT, 2026-11-10: a starting point
+# for the team meeting, made by merging the twelve reader names used in the
+# story files into seven. Not agreed yet, so stories still use free-text
+# `reader` names; once the list is agreed, `reader` should be one of these keys
+# and check_stories.py will require it. `replaces` lists the names in the story
+# files today that the reader would stand for.
+#
+# Keep entries short and based on evidence (Jira persona issues, meeting notes,
+# workshops), not on guesses about people.
+
+- key: newcomer-model-developer
+  name: Newcomer model developer
+  description: >-
+    Wants to get a first model running and evaluated with Chap, with little
+    prior knowledge of the platform and not necessarily high technical skill.
+  typical: a master student, a workshop participant, or someone independent
+  evidence: [CLIM-374]
+  replaces:
+    - newcomer model developer
+
+- key: experienced-modeller
+  name: Experienced modeller
+  description: >-
+    Has a model of their own, built outside Chap, and wants to make it work
+    with Chap and evaluate it; may use an AI agent, but must be able to do it
+    without one.
+  typical: a researcher or a modelling team in a country or a partner
+  evidence: [CLIM-373]
+  replaces:
+    - experienced modeller or someone with existing model
+
+- key: chap-core-contributor
+  name: chap-core contributor
+  description: >-
+    Wants to change the platform code itself: set up a development
+    environment and open a pull request.
+  evidence: [CLIM-374]
+  replaces:
+    - chap-core contributor
+
+- key: implementer
+  name: Implementer
+  description: >-
+    Sets up Chap, the Modeling App and OCS next to DHIS2, for a demo or for
+    production, and keeps the installation running and upgraded.
+  typical: a DHIS2 implementer, HISP devops person or country IT staff
+  evidence: [CLIM-924, CLIM-807]
+  replaces:
+    - DHIS2 implementer or devops person or other person
+    - implementer
+    - operator
+  open: >-
+    `operator` (upgrades) is folded in here because the same person usually
+    installs and upgrades; split it out if the team wants a separate reader.
+
+- key: data-manager
+  name: Data manager
+  description: >-
+    Gets climate and population data into DHIS2 through OCS, on a schedule and
+    with the processing the country needs.
+  evidence: [open-climate-service docs/project_description.md]
+  replaces:
+    - data manager
+
+- key: analyst
+  name: Analyst
+  description: >-
+    Works in the Modeling App or DHIS2 for the country's sake: sets up and
+    judges evaluations, previews and uses climate data, and promotes a model to
+    a prediction setup; at the MOH or a partner, not necessarily a modeller.
+  evidence: [CLIM-430, capacity-building meeting notes 2026-11-04]
+  replaces:
+    - analyst
+    - analyst at the MOH
+    - analyst at the MOH or other place
+    - analyst/modeler at the MOH
+  open: >-
+    Whether "analyst" and "modeler at the MOH" are one reader or two is for the
+    team to decide; the Modeling App stories lean towards one person who does
+    both.
+
+- key: decision-maker
+  name: Decision maker
+  description: >-
+    Sees this period's prediction for their area and decides whether to act on
+    it; does not judge models.
+  evidence: [CLIM-1619]
+  replaces:
+    - decision maker

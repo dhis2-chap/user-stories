@@ -32,6 +32,8 @@ Each file is a list of stories:
 - id: newcomer-first-eval            # unique across all files, kebab-case, never reused
   reader: newcomer model developer   # who, in a few words
   goal: get a first model running and evaluated with `chap eval`
+  why: ...                           # optional: what the reader gets from reaching the goal
+  context: ...                       # optional: what the reader already has and knows
   status: current                    # current, planned or proposed
   starts_at:                         # where the reader starts, in order
     - repo: dhis2-chap/chap-core     # org/name on GitHub
@@ -46,6 +48,14 @@ Each file is a list of stories:
 - `id` is how tools and tests refer to a story. Do not rename one; add a new
   story and delete the old one instead.
 - `goal` is one sentence. If a story needs more than one goal, split it.
+- `why` is one clause on what the reader gets from reaching the goal, or what
+  goes wrong today without it. Optional: leave it out when the goal says it
+  already. Tools read it to judge whether a reader has really reached the
+  goal; the full background stays in Jira.
+- `context` says what the reader already has and knows when they start, for
+  example "has a DHIS2 instance", "knows R, not Docker" or "at a workshop with
+  a trainer". Optional. Tools read it, so it belongs here rather than in
+  `notes`.
 - `done_when` lists what must be true when the reader has reached the goal,
   as outcomes someone can check, not steps. For example, for a scheduled
   import: "values for yesterday are in DHIS2 for every org unit" and "the
@@ -65,11 +75,33 @@ Each file is a list of stories:
   required for `current` stories. For `planned` and `proposed` stories it may
   be empty or left out when nobody knows yet where the reader starts.
 - `jira` links to the persona or user story in Jira, where the background and
-  discussion live. This file holds what can be checked; Jira holds the why.
+  discussion live. This file holds what can be checked, plus the one-line
+  `why`; Jira holds the longer reasoning.
 - `notes` is free text for the team: where the story came from, what is
   still undecided, and anything a reader of the YAML should know. Tools ignore
   it. Keep it to a few sentences; longer discussion goes in Jira. For
   `proposed` stories it is required: say who asked for the story and why.
+
+## Readers
+
+`readers.yaml` lists the readers the stories are written for: a key, a name,
+one line of description, and the evidence the description rests on (Jira
+persona issues, meeting notes). It is a draft from 2026-11-10 that merges the
+reader names used in the story files, for the team to agree on. Until then
+`reader` in a story is free text; once the list is agreed, `reader` should be
+one of the keys and the check below will require it.
+
+## Checks
+
+`check_stories.py` checks the story files against the rules above: required
+fields, kebab-case unique ids, one-sentence goals, valid statuses, `starts_at`
+on every `current` story, `notes` on every `proposed` story, and the shapes of
+`starts_at`, `done_when` and `jira`. It runs in CI on every push and pull
+request (`.github/workflows/check.yml`). To run it locally:
+
+```sh
+pip install pyyaml && python3 check_stories.py
+```
 
 ## Proposing a change
 
@@ -103,12 +135,17 @@ CLIM-1491, under CLIM-1780.
 
 Open for that discussion:
 
-- Reader names: the files use `analyst`, `data manager`, `implementer`,
-  `operator` and `decision maker`. Agree on one set and use it everywhere.
+- Reader names: `readers.yaml` is a draft list of seven readers merged from
+  the names in the files. Agree on it, then switch `reader` to the keys.
+- `done_when` is missing on most `current` stories. The plan is to write it
+  for them and then make it required; see the review in chap-first-brain,
+  `Human-AI-collaboration/Reports/26-11-10_theUserStoriesFormatFollows.md`.
 - The install story starts on chap.dhis2.org and sends the reader on to the
   DHIS2 install docs. The entry page is a guess.
 - `operator-upgrade-stack` is `current` on the assumption that upgrading is
   documented; check.
+- `caps-pipeline` was set to `planned` on 2026-11-10 because it had no
+  `starts_at`; it goes back to `current` when the CAPS docs exist.
 - The Google Doc linked from CLIM-430 has more Modeling App stories that have
   not been read yet.
 - Still missing: R model developers, model developers publishing to the
