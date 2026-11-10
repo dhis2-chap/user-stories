@@ -4,14 +4,18 @@
 
 - id: analyst-start-evaluation
   reader: analyst at the MOH or other place
-  goal: choose the disease to predict, the covariates available in my instance and the candidate models, and start an evaluation of them
+  goal: >-
+    choose the disease to predict, the covariates available in my instance and
+    the candidate models, and start an evaluation of them
   status: planned
   starts_at:
     - repo: dhis2-chap/chap-frontend
       path: apps/modeling-app/docs/user-guides/getting-started
   done_when:
     - an evaluation is running for every candidate model on my data
-    - it is clear in the app when it is done, maybe with email notification as an option
+    - >-
+      it is clear in the app when it is done, maybe with email notification as
+      an option
   jira: [CLIM-430]
   notes: >-
     From the capacity-building meeting on 2026-11-04 (Knut's notes): the first
@@ -22,13 +26,17 @@
 
 - id: analyst-judge-evaluations
   reader: analyst/modeler at the MOH
-  goal: see whether any evaluated model is good enough for my decision, and promote it to a prediction setup
+  goal: >-
+    see whether any evaluated model is good enough for my decision, and promote
+    it to a prediction setup
   status: planned
   starts_at:
     - repo: dhis2-chap/chap-frontend
       path: apps/modeling-app/docs/user-guides/getting-started
   done_when:
-    - every model is shown against the baselines, and the docs say what the comparison means
+    - >-
+      every model is shown against the baselines, and the docs say what the
+      comparison means
     - I can tell which model, if any, to promote, and have done so
   jira: [CLIM-430]
   notes: >-
