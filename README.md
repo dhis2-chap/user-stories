@@ -131,8 +131,10 @@ The climate stories are copied from the user stories in open-climate-service
 structure of the docs and have not been agreed by the team. The Modeling App
 and cross-domain stories were added on 2026-11-06 from the capacity-building
 meeting notes (user roles in the Modeling App) and from the installation
-needs, for discussion at the team meeting the week after. Review is tracked in
-CLIM-1491, under CLIM-1780.
+needs, for discussion at the team meeting the week after. Landing the final set of
+stories is tracked under CLIM-1780: CLIM-1844 (collect earlier work and
+sources), CLIM-1846 (brainstorm candidates), CLIM-1845 (climate team review)
+and then CLIM-1491 (final selection).
 
 Open for that discussion:
 
