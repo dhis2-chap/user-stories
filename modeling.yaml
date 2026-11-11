@@ -52,3 +52,141 @@
     - repo: dhis2-chap/chap-core
       path: docs/contributor/index.md
   jira: [CLIM-374]
+
+# --- Proposed: stories for chap-devops (drafted 2026-11-11) ---
+
+- id: try-chap-with-demo-dhis2
+  reader: newcomer to Chap
+  goal: >-
+    run Chap with a demo DHIS2 on my own computer and make a first forecast in
+    the Modeling App
+  why: >-
+    to see what Chap does and learn the workflow before anyone sets it up for
+    real
+  context: >-
+    has a laptop with Docker that can give it 8 GB of memory; no Python, no
+    DHIS2 of their own; may be helped by an AI assistant
+  status: proposed
+  starts_at:
+    - repo: dhis2-chap/chap-devops
+      path: docs/use-cases/chap-with-local-dhis2.md
+    - repo: dhis2-chap/chap-devops
+      path: docs/modeling-app.md
+  done_when:
+    - the Modeling App opens in the local DHIS2 and lists at least one model
+    - an evaluation of that model on the demo data has finished
+    - a forecast for the coming three months is shown in the Modeling App
+  notes: >-
+    Asked for by Morten Hansen, who maintains chap-devops, so that the
+    chap-devops route for learners is checked like the other stories. Typical
+    readers are a student, a workshop participant or a public health person
+    (chap-devops docs/ai.md). The reader is not in readers.yaml: it could be
+    folded into newcomer-model-developer or analyst, but this person neither
+    builds models nor works for a country yet.
+
+- id: r-model-first-eval
+  reader: R model developer
+  goal: >-
+    start a new forecasting model in R and have Chap train, predict with and
+    evaluate it, without installing Python
+  context: knows R; has Docker; does not know Python
+  status: proposed
+  starts_at:
+    - repo: dhis2-chap/chap-devops
+      path: docs/use-cases/new-model.md
+  done_when:
+    - the model project builds into an image with Docker
+    - the model registers with a running chap-core
+    - >-
+      a backtest of the model has finished and is shown next to the built-in
+      baselines
+  notes: >-
+    Asked for by Morten Hansen, who maintains chap-devops. The README lists R
+    model developers as a missing reader; `chap-devops models new` has R
+    templates (shell-r, mlproject-r and variants with tidyverse or INLA).
+
+- id: evaluate-own-data-without-python
+  reader: experienced modeller
+  goal: >-
+    evaluate and compare two models on my own dataset with `chap eval`, without
+    installing Python or R
+  context: has a CSV of case counts and covariates; has Docker
+  status: proposed
+  starts_at:
+    - repo: dhis2-chap/chap-devops
+      path: docs/use-cases/evaluate-with-chap-cli.md
+  done_when:
+    - there is one evaluation file for each model
+    - there is a table comparing the two models
+  notes: >-
+    Asked for by Morten Hansen, who maintains chap-devops. Overlaps
+    newcomer-first-eval, which uses `chap eval` from a Python setup; this one
+    is the reader's own data and no local Python. The team may prefer to add
+    the chap-devops page to that story's starts_at instead.
+
+- id: implementer-move-to-chap-devops
+  reader: implementer
+  goal: >-
+    move a running Chap server from chap-core's compose files and chap-admin to
+    chap-devops without losing data
+  context: has a Chap server installed with chap-core's compose files
+  status: proposed
+  starts_at:
+    - repo: dhis2-chap/chap-devops
+      path: docs/use-cases/from-chap-admin.md
+  done_when:
+    - >-
+      after the move, existing evaluations, prediction setups and installed
+      models are still there
+    - the old installation is unchanged, so the move can be undone
+  notes: >-
+    Asked for by Morten Hansen, who maintains chap-devops
+    (`chap-devops init --adopt`).
+
+- id: implementer-backup-restore
+  reader: implementer
+  goal: back up a Chap deployment and restore it on the same or a new server
+  status: proposed
+  starts_at:
+    - repo: dhis2-chap/chap-devops
+      path: docs/backup.md
+  done_when:
+    - >-
+      after a restore, evaluations, prediction setups and installed models are
+      there as they were at the backup
+    - a DHIS2 that is part of the deployment is restored with its database
+  notes: >-
+    Asked for by Morten Hansen, who maintains chap-devops. No story covers
+    backups yet; operator-upgrade-stack is the closest.
+
+- id: chap-core-change-against-models
+  reader: chap-core contributor
+  goal: >-
+    run my chap-core checkout against real model services to test a change end
+    to end
+  status: proposed
+  starts_at:
+    - repo: dhis2-chap/chap-devops
+      path: docs/use-cases/chap-core-on-host.md
+  done_when:
+    - the model services register with my chap-core
+    - a backtest started from my chap-core finishes on them
+  notes: >-
+    Asked for by Morten Hansen, who maintains chap-devops. Follows on from
+    chap-core-first-pr, which ends at a dev environment.
+
+- id: modeling-app-dev-with-chap
+  reader: Modeling App developer
+  goal: >-
+    connect the DHIS2 I develop against to a local chap-core with models, so the
+    Modeling App reaches Chap
+  status: proposed
+  starts_at:
+    - repo: dhis2-chap/chap-devops
+      path: docs/use-cases/dhis2-dev-with-chap.md
+  done_when:
+    - the `chap` route of my DHIS2 points at the local chap-core
+    - the Modeling App in my DHIS2 lists the local models
+  notes: >-
+    Asked for by Morten Hansen, who maintains chap-devops. The reader is not in
+    readers.yaml.
