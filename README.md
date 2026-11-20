@@ -143,7 +143,7 @@ change here reaches them within a day:
 
 | Repo | What it does with the terms |
 |------|-----------------------------|
-| [dhis2-chap/chap-core](https://github.com/dhis2-chap/chap-core) | serves them from its REST API, to look up one term or fetch them all (in a pull request as of 2026-11-20) |
+| [dhis2-chap/chap-core](https://github.com/dhis2-chap/chap-core) | serves them from its REST API, to look up one term or fetch them all (pull request [#911](https://github.com/dhis2-chap/chap-core/pull/911), a draft as of 2026-11-20) |
 | dhis2-chap/learning-material | shows the terms about models and evaluation on its [glossary page](https://chap-sandbox.dhis2.org/learning-material/guides/glossary/), picked by `id` |
 | dhis2-chap/chap-first-brain | the team's knowledge base; AI agents look terms up there before they write |
 
