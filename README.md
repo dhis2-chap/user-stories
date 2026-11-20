@@ -11,6 +11,10 @@ The stories are read by tools, so they are YAML with a fixed format. The
 walks each story through the docs as that reader and reports where they get
 stuck.
 
+The repo also holds the team's terminology, `terminology.yaml`: the names we
+use for Chap and its parts and what we mean by the words we use about models
+and evaluation. See "Terminology" below.
+
 ## Files
 
 One file per domain. Each team owns its file.
@@ -91,17 +95,96 @@ reader names used in the story files, for the team to agree on. Until then
 `reader` in a story is free text; once the list is agreed, `reader` should be
 one of the keys and the check below will require it.
 
+## Terminology
+
+`terminology.yaml` is the one source for the team's terms. It is public so
+that anyone can read it and other code can fetch it. To look up a word, search
+the file for it: every name a term goes by is in its `term`, `aliases` or
+`avoid`.
+
+```yaml
+- id: backtest                 # unique, kebab-case, never renamed
+  term: Backtest               # the name as we write it
+  group: Evaluation            # Products, Models, Evaluation or Model Marketplace
+  status: current              # current or proposed
+  definition: >-               # one or two short, plain sentences
+    Go back in the historical data, let a model forecast ahead from there, and
+    compare with what was reported.
+  note: One specific way to evaluate a model.   # optional: one short remark shown with the definition
+  details: >-                  # optional: the longer working definition
+    Testing a model on historical data by repeatedly pretending to stand at
+    different points in the past, ...
+  aliases: [backtesting, retrospective validation]   # optional: other names and forms of the same thing
+  avoid: [...]                 # optional: names we do not use for it, such as "CHAP" for Chap
+  see_also: [evaluation, hindcast]                   # optional: ids of related terms
+```
+
+- `id` is how code refers to a term. Do not rename one, and do not delete a
+  term without checking who shows it (see "Who reads it").
+- `definition` is what glossaries show, word for word, to people who are new to
+  the subject, such as a district health officer. Keep it to one or two short
+  sentences without jargon. `note` is shown right after it: another name the
+  reader will meet, or how the term relates to its neighbour.
+- `details` is for people who write about Chap or build it: the fuller working
+  definition, how the word is used in the code, known mix-ups. No names of
+  people, meetings or internal documents; this file is public.
+- `aliases` and `avoid` are what a lookup searches besides `term`. A name leads
+  to one term only, so it cannot be listed under two. A word with several
+  senses gets its own entry that names the senses and points to them with
+  `see_also`, as `model` and `template` do.
+- `status` is `current` for a term the team uses as written here, and
+  `proposed` for an entry the team has not gone through yet. A `proposed` entry
+  is the best wording so far and may change.
+
+### Who reads it
+
+Each of these keeps a copy of the file and updates it automatically, so a
+change here reaches them within a day:
+
+| Repo | What it does with the terms |
+|------|-----------------------------|
+| [dhis2-chap/chap-core](https://github.com/dhis2-chap/chap-core) | serves them from its REST API, to look up one term or fetch them all (in a pull request as of 2026-11-20) |
+| dhis2-chap/learning-material | shows the terms about models and evaluation on its [glossary page](https://chap-sandbox.dhis2.org/learning-material/guides/glossary/), picked by `id` |
+| dhis2-chap/chap-first-brain | the team's knowledge base; AI agents look terms up there before they write |
+
+To use the terms somewhere else, fetch
+`https://raw.githubusercontent.com/dhis2-chap/user-stories/main/terminology.yaml`
+and keep a copy, rather than writing the definitions again. Check what you
+fetched before you replace your copy (`python3 check_terminology.py <file>`
+does it), so that a broken file here never replaces a good copy.
+
+### Proposing a change to a term
+
+- **Pull request**, for a concrete change. To change a term, edit its entry
+  and say in the pull request why, and who asked for it. To add a term, add an
+  entry with a new `id` and `status: proposed`. Run `check_terminology.py`
+  first. One term, or one group of terms that belong together, per pull
+  request.
+- **Issue**, for a word that is used in two ways, a definition that reads
+  wrong, or a term that is missing, when you do not have the wording yet. Say
+  where you met the word and what was unclear.
+
+The team goes through proposals at its team meeting, as for stories. An
+accepted term gets `status: current`. A term the team drops is deleted, after
+checking that no page shows it.
+
 ## Checks
+
+`check_terminology.py` checks `terminology.yaml` against the rules above:
+required fields, kebab-case unique ids, valid groups and statuses, that no name
+leads to two terms, and that every `see_also` names a term.
 
 `check_stories.py` checks the story files against the rules above: required
 fields, kebab-case unique ids, one-sentence goals, valid statuses, `starts_at`
 on every `current` story, `notes` on every `proposed` story, and the shapes of
 `starts_at`, `done_when` and `jira`. It also lists, as a note, the `current`
-stories that have no `done_when` yet. It runs in CI on every push and pull
-request (`.github/workflows/check.yml`). To run it locally:
+stories that have no `done_when` yet.
+
+Both run in CI on every push and pull request (`.github/workflows/check.yml`).
+To run them locally:
 
 ```sh
-pip install pyyaml && python3 check_stories.py
+pip install pyyaml && python3 check_stories.py && python3 check_terminology.py
 ```
 
 ## Proposing a change

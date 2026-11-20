@@ -1,4 +1,4 @@
-name: Check stories
+name: Check stories and terminology
 
 on:
   push:
@@ -15,3 +15,4 @@ jobs:
           python-version: "3.12"
       - run: pip install pyyaml
       - run: python3 check_stories.py
+      - run: python3 check_terminology.py
