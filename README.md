@@ -128,10 +128,15 @@ the file for it: every name a term goes by is in its `term`, `aliases` or
 - `details` is for people who write about Chap or build it: the fuller working
   definition, how the word is used in the code, known mix-ups. No names of
   people, meetings or internal documents; this file is public.
-- `aliases` and `avoid` are what a lookup searches besides `term`. A name leads
-  to one term only, so it cannot be listed under two. A word with several
+- `term` is the name we write. `aliases` are other names the same thing is
+  found under: old names, names in the code, other forms. `avoid` holds names
+  we do not use at all. A lookup searches all three. A name leads to one term
+  only, so it cannot be listed under two. A word with several
   senses gets its own entry that names the senses and points to them with
   `see_also`, as `model` and `template` do.
+- `group` is one of the four groups. To add a group, add it to `GROUPS` in
+  `check_terminology.py`, and tell the repos under "Who reads it": each has
+  its own copy of these checks and refuses a group it does not know.
 - `status` is `current` for a term the team uses as written here, and
   `proposed` for an entry the team has not gone through yet. A `proposed` entry
   is the best wording so far and may change.
